@@ -1,6 +1,6 @@
 {
   "name": "compressed-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON key compressor",
   "main": "lib",
   "browser": "shim",
@@ -12,7 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/okunishinishi/node-compressed-json.git"
   },
-  "keywords": ["JSON"],
+  "keywords": [
+    "JSON"
+  ],
   "author": "Taka Okunish",
   "license": "MIT",
   "bugs": {

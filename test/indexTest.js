@@ -47,15 +47,15 @@ describe('index', () => {
 
   it('Shrink with large data', () => {
     const { compress } = index
-    const arr = new Array(100).fill(null).map((_, i) => ({
-      index: i % 10,
+    const arr = new Array(10000).fill(null).map((_, i) => ({
+      index: i,
       name: `This is item-${i}`,
       $$entity: true,
     }))
     ok(JSON.stringify(arr).length > compress.toString(arr).length)
 
-    // const rate = compress.toString(arr).length / JSON.stringify(arr).length
-    // console.log('compress rage',rate)
+    const rate = compress.toString(arr).length / JSON.stringify(arr).length
+    console.log('compress rage',rate)
   })
 })
 
