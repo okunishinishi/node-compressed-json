@@ -1,6 +1,6 @@
 {
   "name": "compressed-json",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "JSON key compressor",
   "main": "lib",
   "browser": "shim",
