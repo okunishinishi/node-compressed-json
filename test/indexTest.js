@@ -19,7 +19,7 @@ describe('index', () => {
       ddd: {
         eee: [
           [
-            ['Hey']
+            ['Hey',12]
           ]
         ],
         fff: {
@@ -30,7 +30,7 @@ describe('index', () => {
       hhh:'hoge2',
       nnn:'hoge',
     })
-
+    console.log(compressed)
     ok(compressed)
     const restored = decompress(compressed)
     ok(restored)
@@ -41,6 +41,7 @@ describe('index', () => {
     ok(Array.isArray(restored.ddd.eee[0]))
     ok(Array.isArray(restored.ddd.eee[0][0]))
     equal(restored.ddd.eee[0][0][0], 'Hey')
+    equal(restored.ddd.eee[0][0][1], 12)
     equal(restored.ddd.fff.ggg.hhh, 'hoge')
     equal(restored.nnn, 'hoge')
   })
