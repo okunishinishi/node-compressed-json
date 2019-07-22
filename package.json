@@ -1,0 +1,25 @@
+{
+  "name": "compressed-json",
+  "version": "1.0.0",
+  "description": "JSON key compressor",
+  "main": "lib",
+  "browser": "shim",
+  "scripts": {
+    "test": "mocha test",
+    "prepare": "babel lib --out-dir shim --presets=@babel/preset-env --source-maps inline --copy-files; lebab --replace 'shim/**/*.js' --transform commonjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okunishinishi/node-compressed-json.git"
+  },
+  "keywords": ["JSON"],
+  "author": "Taka Okunish",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/okunishinishi/node-compressed-json/issues"
+  },
+  "homepage": "https://github.com/okunishinishi/node-compressed-json#readme",
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  }
+}
