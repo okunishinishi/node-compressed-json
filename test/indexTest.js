@@ -19,7 +19,7 @@ describe('index', () => {
       ddd: {
         eee: [
           [
-            ['Hey',12]
+            ['Hey',12, null]
           ]
         ],
         fff: {
@@ -29,8 +29,11 @@ describe('index', () => {
       jjjj: void (0),
       hhh:'hoge2',
       nnn:'hoge',
+      asdf:'hoge',
+      jjj:'hoge',
+      n: 'p:143243',
+      j: 'e:3'
     })
-    console.log(compressed)
     ok(compressed)
     const restored = decompress(compressed)
     ok(restored)
@@ -43,7 +46,10 @@ describe('index', () => {
     equal(restored.ddd.eee[0][0][0], 'Hey')
     equal(restored.ddd.eee[0][0][1], 12)
     equal(restored.ddd.fff.ggg.hhh, 'hoge')
+    equal(restored.jjj, 'hoge')
     equal(restored.nnn, 'hoge')
+    equal(restored.n, 'p:143243')
+    equal(restored.j, 'e:3')
   })
 
   it('Shrink with large data', () => {
@@ -51,10 +57,11 @@ describe('index', () => {
     const arr = new Array(10000).fill(null).map((_, i) => ({
       index: i,
       name: `This is item-${i}`,
+      text:'x#123143243234324324242t343234234',
+      text2:'x#123213',
       $$entity: true,
     }))
     ok(JSON.stringify(arr).length > compress.toString(arr).length)
-
     const rate = compress.toString(arr).length / JSON.stringify(arr).length
     console.log('compress rage',rate)
   })
