@@ -126,7 +126,7 @@ compressed-json has two logics:
 | --- | ----------- |
 | `K` | Array of original keys. Object keys are replaced with index of `K` in the compressed json |
 | `P` | Pointed string values. Values are replaced with index of `P` in the compressed json |
-| `_` | Compressed payload. Keeps original structure, but some key or values with replaced to `K` or `P`  |
+| `_` | Compressed payload. Keeps original structure, but keys and values may be replaced with pointers to `K` or `P` |
 
 
 <a name="key-compression-logic"/>
