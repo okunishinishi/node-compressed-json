@@ -30,7 +30,6 @@ const compressed = cjson.compress({ /* Large json */ })
 const restored = cjson.decompress(compressed)
 
 // Convert json string
-
 const compressedString = cjson.compress.toString({ /* Some large json */ })
 const restoredFromString = cjson.decompress.fromString(compressedString)
 
@@ -52,13 +51,13 @@ compressed-json has two logics:
   "description": "This is example json",
   "entities": [
     {
-      "id": 1,
+      "id": 100,
       "name": "Dog",
       "desc": "This is desc of dog",
       "tag": ["animal"]
     },
     {
-      "id": 1,
+      "id": 101,
       "name": "Cat",
       "desc": "This is desc of cat",
       "tag": ["animal"]
@@ -82,7 +81,7 @@ compressed-json has two logics:
     "0": "This is example json",
     "1": [
       {
-        "2": 1,
+        "2": 100,
         "3": "Dog",
         "4": "This is desc of dog",
         "5": [
@@ -90,7 +89,7 @@ compressed-json has two logics:
         ]
       },
       {
-        "2": 1,
+        "2": 101,
         "3": "Cat",
         "4": "This is desc of cat",
         "5": [
@@ -125,9 +124,9 @@ compressed-json has two logics:
 
 | Key | Description |
 | --- | ----------- |
-| `K` | Array of original keys |
-| `P` | Pointed string values |
-| `_` | Compressed payload |
+| `K` | Array of original keys. Object keys are replaced with index of `K` in the compressed json |
+| `P` | Pointed string values. Values are replaced with index of `P` in the compressed json |
+| `_` | Compressed payload. Keeps original structure, but some key or values with replaced to `K` or `P`  |
 
 
 <a name="key-compression-logic"/>
@@ -136,8 +135,12 @@ compressed-json has two logics:
 
 All object keys are replaced with index of array stored in `K` of compressed JSON.
 
+The more same key appears in original json, the more better compression.
+
 <a name="string-value-pointing-logic" />
 
 ### String-Value-Pointing
 
 String values appeared at least two will replaced with pointer string with contains index of array stored in `P` of compressed JSON.
+
+The more same string value appears in original json, the more better compression.
