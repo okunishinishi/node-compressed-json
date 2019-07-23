@@ -33,7 +33,9 @@ describe('index', () => {
       asdf: 'hoge',
       jjj: 'hoge',
       n: 'p:143243',
-      j: 'e:3'
+      j: 'e:3',
+      d: new Date('2019/09/09'),
+      d2: 'd:1567954800000'
     })
     ok(compressed)
     const restored = decompress(compressed)
@@ -51,6 +53,11 @@ describe('index', () => {
     equal(restored.nnn, 'hoge')
     equal(restored.n, 'p:143243')
     equal(restored.j, 'e:3')
+    equal(
+      new Date(restored.d) - new Date('2019/09/09'),
+      0
+    )
+    equal(restored.d2, 'd:1567954800000')
   })
 
   it('Handle array', () => {
