@@ -4,7 +4,7 @@
 'use strict'
 
 const index = require('../lib/index')
-const { ok, equal } = require('assert').strict
+const { ok, equal, deepEqual } = require('assert').strict
 const { describe, it } = require('mocha')
 
 describe('index', () => {
@@ -88,7 +88,7 @@ describe('index', () => {
     const { compress } = index
     const obj = Object.assign({},
       ...new Array(10000).fill(null).map((_, i) => ({
-        [`k-${i}`]:{
+        [`k-${i}`]: {
           index: i,
           name: `This is item-${i}`,
           text: 'x#123143243234324324242t343234234',
@@ -100,6 +100,68 @@ describe('index', () => {
     ok(JSON.stringify(obj).length > compress.toString(obj).length)
     const rate = compress.toString(obj).length / JSON.stringify(obj).length
     console.log('\n[Large Object] compress rage', rate)
+  })
+
+  it('Empty object', () => {
+    const { compress, decompress } = index
+    const compressed = compress({})
+    ok(compressed)
+    const decompressed = decompress(compressed)
+    deepEqual(decompressed, {})
+  })
+
+  it('Tiny object', () => {
+    const { compress, decompress } = index
+    const obj = { aa: 1, bb: 2 }
+    const compressed = compress(obj)
+    ok(compressed)
+    const decompressed = decompress(compressed)
+    deepEqual(decompressed, obj)
+    // ok(JSON.stringify(obj).length > compress.toString(obj).length)
+    const rate = compress.toString(obj).length / JSON.stringify(obj).length
+    console.log('\n[Tiny Object] compress rage', rate)
+  })
+
+  it('Using reserved', () => {
+    const { compress, decompress } = index
+    const reservedKeys = ['name', 'description']
+    const reservedValues = ['yamada']
+    const obj = [
+      { name: 'yamada', description: 'This is yamada', version: 1 },
+      { name: 'tanaka', description: 'This is tanaka', respects: 'suzuki', version: 1 },
+      { name: 'suzuki', description: 'This is suzuki', respects: 'yamada', version: 3 },
+    ]
+    ok(obj)
+    const compressed = compress(obj, { reservedKeys, reservedValues })
+    deepEqual(compressed.K, ['version', 'respects'])
+    deepEqual(compressed.P, ['suzuki'])
+    ok(compressed)
+    const decompressed = decompress(compressed, { reservedKeys, reservedValues })
+    deepEqual(decompressed, obj)
+    ok(JSON.stringify(obj).length > compress.toString(obj).length)
+    const rate = compress.toString(obj).length / JSON.stringify(obj).length
+    console.log('\n[Reserved Object] compress rage', rate)
+  })
+
+  it('Using bind', () => {
+    const { bind } = index
+
+    const { compress, decompress } = bind({
+      reservedKeys: ['name', 'description'],
+      reservedValues: ['yamada'],
+    })
+    const obj = [
+      { name: 'yamada', description: 'This is yamada', version: 1 },
+      { name: 'tanaka', description: 'This is tanaka', respects: 'suzuki', version: 1 },
+      { name: 'suzuki', description: 'This is suzuki', respects: 'yamada', version: 3 },
+    ]
+    ok(obj)
+    const compressed = compress(obj)
+    deepEqual(compressed.K, ['version', 'respects'])
+    deepEqual(compressed.P, ['suzuki'])
+    ok(compressed)
+    const decompressed = decompress(compressed)
+    deepEqual(decompressed, obj)
   })
 })
 
