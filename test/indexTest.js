@@ -162,6 +162,11 @@ describe('index', () => {
     ok(compressed)
     const decompressed = decompress(compressed)
     deepEqual(decompressed, obj)
+
+    const onceString = decompress.fromString(
+      compress.toString(obj)
+    )
+    deepEqual(onceString, obj)
   })
 })
 
