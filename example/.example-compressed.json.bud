@@ -1,0 +1,16 @@
+'use strict'
+
+const compress = require('../lib/compress')
+const src = require('./example-src.json')
+
+module.exports = {
+  force:true,
+  mode:'444',
+  data:{
+    ...compress(src)
+  }
+}
+
+if(!module.parent){
+  require('coz').render(__filename)
+}

@@ -1,0 +1,55 @@
+# compressed-json
+
+JSON key compressor
+
+## Install
+
+```bash
+npm i compressed-json
+```
+
+## Usage
+
+```js
+{{{render 'example/usage.js'}}}
+```
+
+## How It Works
+
+compressed-json has two logics:
+
+* [Key-Compression](#key-compression-logic)
+* [String-Value-Pointing](#string-value-pointing-logic)
+
+### Example compression
+
+**example-src.json**
+
+```json
+{{{render 'example/example-src.json'}}}
+```
+
+**example-compressed.json**
+
+```json
+{{{render 'example/example-compressed.json'}}}
+```
+
+### Structure of compressed json
+
+| Key | Description |
+| --- | ----------- |
+| `K` | Array of original keys |
+| `P` | Pointed string values |
+| `_` | Compressed payload |
+
+
+<a name="key-compression-logic"/>
+### Key-Compression logic
+
+All object keys are replaced with index of array stored in `K` of compressed JSON.
+
+<a name="string-value-pointing-logic" />
+### String-Value-Pointing
+
+String values appeared at least two will replaced with pointer string with contains index of array stored in `P` of compressed JSON.

@@ -1,0 +1,42 @@
+{
+  "_": {
+    "0": "This is example json",
+    "1": [
+      {
+        "2": 1,
+        "3": "Dog",
+        "4": "This is desc of dog",
+        "5": [
+          "p:0"
+        ]
+      },
+      {
+        "2": 1,
+        "3": "Cat",
+        "4": "This is desc of cat",
+        "5": [
+          "p:0"
+        ]
+      }
+    ],
+    "6": [
+      "Unique string will be kept as is",
+      "p:1",
+      "p:1",
+      "e:p: string start with 'p:' will be escaped "
+    ]
+  },
+  "K": [
+    "description",
+    "entities",
+    "id",
+    "name",
+    "desc",
+    "tag",
+    "notes"
+  ],
+  "P": [
+    "animal",
+    "Duplicated string will be combined"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This is example json",
+  "entities": [
+    {
+      "id": 1,
+      "name": "Dog",
+      "desc": "This is desc of dog",
+      "tag": ["animal"]
+    },
+    {
+      "id": 1,
+      "name": "Cat",
+      "desc": "This is desc of cat",
+      "tag": ["animal"]
+    }
+  ],
+  "notes": [
+    "Unique string will be kept as is",
+    "Duplicated string will be combined",
+    "Duplicated string will be combined",
+    "p: string start with 'p:' will be escaped "
+  ]
+}

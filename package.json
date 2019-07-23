@@ -6,7 +6,9 @@
   "browser": "shim",
   "scripts": {
     "test": "mocha test",
-    "prepare": "babel lib --out-dir shim --presets=@babel/preset-env --source-maps inline --copy-files; lebab --replace 'shim/**/*.js' --transform commonjs"
+    "transpile": "babel lib --out-dir shim --presets=@babel/preset-env --source-maps inline --copy-files; lebab --replace 'shim/**/*.js' --transform commonjs",
+    "build": "coz render .*.bud example/.*.bud",
+    "prepare": "npm run build;npm run transpile"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,11 @@
   },
   "homepage": "https://github.com/okunishinishi/node-compressed-json#readme",
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "coz": "^7.0.19",
+    "lebab": "^3.1.0",
     "mocha": "^6.2.0"
   }
 }
