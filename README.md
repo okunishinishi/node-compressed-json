@@ -1,6 +1,16 @@
 # compressed-json
 
-JSON key compressor
+[bd_npm_shield_url]: http://img.shields.io/npm/v/install-if-needed.svg?style=flat
+[bd_npm_url]: http://www.npmjs.org/package/compressed-json
+
+[![npm Version][bd_npm_shield_url]][bd_npm_url]
+
+String base JSON compressor
+
+If you want seriously reduce your data size, consider using [msgpack](https://msgpack.org/index.html).
+
+Use compressed-json only if you cannot handle binary for some reason.
+
 
 ## Install
 

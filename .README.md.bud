@@ -1,10 +1,12 @@
 'use strict'
 
+const pkg =require('./package')
+
 module.exports = {
   force:true,
   mode:'444',
   data:{
-
+    pkg
   }
 }
 
