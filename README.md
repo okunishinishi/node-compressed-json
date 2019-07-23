@@ -121,11 +121,13 @@ compressed-json has two logics:
 
 
 <a name="key-compression-logic"/>
+
 ### Key-Compression logic
 
 All object keys are replaced with index of array stored in `K` of compressed JSON.
 
 <a name="string-value-pointing-logic" />
+
 ### String-Value-Pointing
 
 String values appeared at least two will replaced with pointer string with contains index of array stored in `P` of compressed JSON.
