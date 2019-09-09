@@ -1,0 +1,29 @@
+{
+  "reservedKeys": [
+    "$$as",
+    "$$at",
+    "$$entity",
+    "$$num",
+    "$ref",
+    "additional",
+    "alt",
+    "archiveEnd",
+    "archiveRef",
+    "archiveStart",
+    "archived",
+    "createdAt",
+    "description",
+    "direction",
+    "id",
+    "key",
+    "lat",
+    "lng",
+    "name",
+    "token",
+    "type",
+    "updatedAt",
+    "version",
+    "visibility"
+  ],
+  "reservedValues": []
+}

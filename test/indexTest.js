@@ -168,6 +168,14 @@ describe('index', () => {
     )
     deepEqual(onceString, obj)
   })
+
+  it('With large keys', () => {
+    const { decompress } = index
+    const compressed = require('../misc/mocks/large-data')
+    const { reservedKeys, reservedValues } = require('../misc/mocks/large-reserved')
+    const decompressed = decompress(compressed, { reservedKeys, reservedValues })
+    equal(decompressed.trail.beacons[0].type, 'home')
+  })
 })
 
 /* global describe, it */
